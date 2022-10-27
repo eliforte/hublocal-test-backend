@@ -1,6 +1,6 @@
 export interface IToken {
-  id?: string;
+  id: string;
   name: string;
   email: string;
-  is_main: boolean;
+  is_admin: boolean;
 }
