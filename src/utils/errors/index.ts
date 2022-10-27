@@ -11,3 +11,5 @@ export const USER_EXIST = new NewError(409, 'Email já registrado');
 export const INCORRECT_USER = new NewError(401, 'Senha ou email incorretos');
 
 export const USER_NOT_ADMIN = new NewError(401, 'Ação retrista a administradores');
+
+export const ERROR_CREATING_USER = new NewError(400, 'Erro ao registrar o usuário. Aguarde um momento e tente de novamente.');
