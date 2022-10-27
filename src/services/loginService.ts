@@ -2,13 +2,8 @@ import bcrypt from 'bcrypt';
 import { PrismaClient } from '@prisma/client';
 import { prismaClient } from '../database/prismaClient';
 import Auth from '../utils/auth/token';
-import { ILogin } from '../utils/interfaces/ILogin';
+import { ILogin, IBodyLogin } from '../utils/interfaces/ILogin';
 import { USER_NOT_EXIST, INCORRECT_USER } from '../utils/errors';
-
-interface IBodyLogin {
-  email: string;
-  password: string;
-}
 
 export default class LoginService {
   protected _model: PrismaClient;
@@ -18,10 +13,8 @@ export default class LoginService {
   }
 
   public login = async (body: IBodyLogin): Promise<ILogin> => {
-    const user = await this._model.users.findFirst({
-      where: {
-        email: body.email,
-      },
+    const user = await this._model.users.findUnique({
+      where: { email: body.email },
     });
     if (!user) throw USER_NOT_EXIST;
 
@@ -29,8 +22,6 @@ export default class LoginService {
     if (!isPasswordValid) throw INCORRECT_USER;
 
     const {
-      created_at,
-      password,
       email,
       is_admin,
       id,
