@@ -11,7 +11,7 @@ export const SCHEMACompany = Joi.object({
     address: Joi.string().required(),
     address_number: Joi.number().required(),
     phone_number: Joi.number().required(),
-    complement: Joi.string().required(),
+    complement: Joi.string(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
 });

@@ -6,14 +6,14 @@ export const SCHEMAPlaces = Joi.object({
     address: Joi.string().required(),
     phone_number: Joi.string().required(),
     address_number: Joi.number().required(),
-    complement: Joi.string().required(),
+    complement: Joi.string(),
     cep: Joi.string().required(),
   }).required(),
   responsibles: Joi.object({
     full_name: Joi.string().min(5).required(),
     address: Joi.string().required(),
     address_number: Joi.number().required(),
-    complement: Joi.string().required(),
+    complement: Joi.string(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
 });
