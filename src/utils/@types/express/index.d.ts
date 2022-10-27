@@ -2,7 +2,7 @@ declare global {
   namespace Express {
     interface Request {
       user: {
-        _id?: string | undefined;
+        id?: string | undefined;
         name: string;
         email: string;
         is_admin: boolean;
