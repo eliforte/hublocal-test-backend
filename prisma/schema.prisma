@@ -52,6 +52,7 @@ model Places {
 model Responsables {
   id String @id @default(uuid()) @unique
   full_name String
+  phone_number Int
   address String
   address_number Int
   complement String
