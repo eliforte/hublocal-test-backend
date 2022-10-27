@@ -27,14 +27,14 @@ export default class UserRouter extends CustomRouter<IUser> {
       this._controller.create,
     );
     this._router.get(
-      this._path,
-      Auth.verifyToken,
-      this._controller.getAll,
-    );
-    this._router.get(
       `${this._path}/:id`,
       Auth.verifyToken,
       this._controller.getById,
+    );
+    this._router.get(
+      this._path,
+      Auth.verifyToken,
+      this._controller.getAll,
     );
     this._router.put(
       `${this._path}/:id`,
