@@ -8,14 +8,7 @@ export default abstract class Controller<T> {
     this._service = service;
   }
 
-  public create = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
-    try {
-      const create = await this._service.create(req.body);
-      return res.status(201).json(create);
-    } catch (error) {
-      return next(error);
-    }
-  };
+  public abstract create(req: Req, res: Res, next: Next): Promise<typeof res | void>;
 
   public getAll = async (_req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
