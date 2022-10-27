@@ -51,18 +51,18 @@ model Places {
 
 model Responsables {
   id String @id @default(uuid()) @unique
-  full_name String
-  phone_number Int
+  full_name String @unique
+  phone_number Int @unique
   address String
   address_number Int
   complement String
   cep String
   is_main_responsable Boolean
   created_at  DateTime @default(now())
-  company_id String
-  company Companies @relation(fields: [company_id], references: [id])
-  places_id String
-  places Places @relation(fields: [places_id], references: [id])
+  company Companies? @relation(fields: [company_id], references: [id])
+  company_id String? @unique
+  places Places? @relation(fields: [places_id], references: [id])
+  places_id String? @unique
 
   @@map("responsables")
 }
