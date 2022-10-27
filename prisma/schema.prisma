@@ -38,7 +38,7 @@ model Places {
   name      String
   address   String
   address_number Int
-  complement String
+  complement String?
   cep String
   created_at  DateTime @default(now())
   company_id String
@@ -55,7 +55,7 @@ model Responsables {
   phone_number Int @unique
   address String
   address_number Int
-  complement String
+  complement String?
   cep String
   is_main_responsable Boolean
   created_at  DateTime @default(now())
