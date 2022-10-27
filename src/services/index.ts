@@ -1,4 +1,12 @@
+import { PrismaClient } from '@prisma/client';
+
 export default abstract class Service<T> {
+  protected _model: PrismaClient;
+
+  constructor(model: PrismaClient) {
+    this._model = model;
+  }
+
   public abstract create(data: T): Promise<T | string>;
 
   public abstract getAll(): Promise<T[]>;
