@@ -1,17 +1,19 @@
 import { Router } from 'express';
-import UserController from '../controllers/loginController';
+import LoginController from '../controllers/loginController';
 import ValidadeLogin from '../middlewares/validations/loginValidation';
 
 export default class LoginRoutes {
   private _router: Router;
 
-  private _controller: UserController;
+  private _path = '/api/v1/login';
+
+  private _controller: LoginController;
 
   private _validate: ValidadeLogin;
 
   constructor(
-    controller: UserController = new UserController(),
-    validate = new ValidadeLogin(),
+    controller: LoginController = new LoginController(),
+    validate: ValidadeLogin = new ValidadeLogin(),
   ) {
     this._router = Router();
     this._validate = validate;
@@ -19,15 +21,15 @@ export default class LoginRoutes {
     this._routes();
   }
 
+  public get router(): Router {
+    return this._router;
+  }
+
   private _routes(): void {
     this._router.post(
-      '/api/v1/login',
+      this._path,
       this._validate.validateReqBody,
       this._controller.login,
     );
-  }
-
-  public get router(): Router {
-    return this._router;
   }
 }
