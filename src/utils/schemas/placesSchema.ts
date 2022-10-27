@@ -9,7 +9,7 @@ export const SCHEMAPlaces = Joi.object({
     complement: Joi.string().required(),
     cep: Joi.string().required(),
   }).required(),
-  responsibles: Joi.array().items({
+  responsibles: Joi.object({
     full_name: Joi.string().min(5).required(),
     address: Joi.string().required(),
     address_number: Joi.number().required(),
