@@ -74,7 +74,11 @@ model Tickets {
   created_by_user String
   upgradable_by_user String
   status String
-  updated_infos Json
+  name      String?
+  address   String?
+  address_number Int?
+  complement String?
+  cep String?
   place_id String
   place Places @relation(fields: [place_id], references: [id])
 
