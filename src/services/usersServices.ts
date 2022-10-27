@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { IUser } from '../utils/interfaces/IUser';
-import Service from '.';
+import Service from './service';
 import { prismaClient } from '../database/prismaClient';
 import {
   USER_EXIST,
@@ -12,7 +12,7 @@ export default class UserService extends Service<IUser> {
     super(model);
   }
 
-  public create = async (user: IUser): Promise<string> => {
+  public create = async (user: IUser, user_id: string): Promise<string> => {
     const {
       name, email, password, is_admin,
     } = user;
