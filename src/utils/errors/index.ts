@@ -9,3 +9,5 @@ export const USER_NOT_EXIST = new NewError(404, 'Usuário não existe');
 export const USER_EXIST = new NewError(409, 'Email já registrado');
 
 export const INCORRECT_USER = new NewError(401, 'Senha ou email incorretos');
+
+export const USER_NOT_ADMIN = new NewError(401, 'Ação retrista a administradores');
