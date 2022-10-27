@@ -1,4 +1,3 @@
-import bcrypt from 'bcrypt';
 import { PrismaClient } from '@prisma/client';
 import { prismaClient } from '../database/prismaClient';
 import Auth from '../utils/auth/token';
@@ -18,8 +17,7 @@ export default class LoginService {
     });
     if (!user) throw USER_NOT_EXIST;
 
-    const isPasswordValid = bcrypt.compareSync(body.password, user.password);
-    if (!isPasswordValid) throw INCORRECT_USER;
+    if (user.password !== body.password) throw INCORRECT_USER;
 
     const {
       email,
