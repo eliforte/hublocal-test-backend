@@ -31,7 +31,7 @@ export default class Auth {
       const token = req.headers.authorization?.split(' ')[1];
       if (token) {
         const decoded = jwt.verify(token, `${process.env.SECRET}`) as IToken;
-        if (decoded.is_admin!) throw USER_NOT_ADMIN;
+        if (!decoded.is_admin) throw USER_NOT_ADMIN;
       }
       next();
     } catch (error) {
