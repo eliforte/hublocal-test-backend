@@ -7,7 +7,7 @@ export default abstract class Service<T> {
     this._model = model;
   }
 
-  public abstract create(data: T): Promise<T | string>;
+  public abstract create(data: T, user_id: string | undefined): Promise<T | string>;
 
   public abstract getAll(): Promise<T[]>;
 

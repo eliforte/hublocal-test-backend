@@ -1,5 +1,5 @@
 import { Request as Req, Response as Res, NextFunction as Next } from 'express';
-import Service from '../services';
+import Service from '../services/service';
 
 export default abstract class Controller<T> {
   protected _service: Service<T>;
