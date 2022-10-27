@@ -3,3 +3,8 @@ export interface ILogin {
   name: string;
   is_admin: boolean;
 }
+
+export interface IBodyLogin {
+  email: string;
+  password: string;
+}
