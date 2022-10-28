@@ -19,3 +19,7 @@ export const COMPANY_EXIST = new NewError(401, 'Empresa já registrada');
 export const RESPONSABLE_EXIST = new NewError(401, 'Responsável já registrado');
 
 export const ERROR_CREATING_COMPANY = new NewError(400, 'Erro ao registrar o empresa. Aguarde um momento e tente de novamente.');
+
+export const PLACE_EXIST = new NewError(401, 'Local já registrado');
+
+export const ERROR_CREATING_PLACE = new NewError(400, 'Erro ao registrar o estabelecimento. Aguarde um momento e tente de novamente.');
