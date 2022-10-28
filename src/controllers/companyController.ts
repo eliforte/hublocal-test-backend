@@ -18,4 +18,14 @@ export default class CompanyController extends Controller<ICompany | ISingleComp
       return next(error);
     }
   };
+
+  public update = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
+    try {
+      const { id } = req.user;
+      const update = await this._service.update(req.params.id, req.body, id);
+      return res.status(202).json({ ...update });
+    } catch (error) {
+      return next(error);
+    }
+  };
 }

@@ -11,9 +11,18 @@ export default class UsersController extends Controller<IUser> {
 
   public create = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
-      const { id } = req.user;
-      const created = await this._service.create(req.body, id);
+      const created = await this._service.create(req.body);
       return res.status(201).json({ message: created });
+    } catch (error) {
+      return next(error);
+    }
+  };
+
+  public update = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
+    try {
+      const { id } = req.user;
+      const update = await this._service.update(req.params?.id, req.body, id);
+      return res.status(202).json({ ...update });
     } catch (error) {
       return next(error);
     }

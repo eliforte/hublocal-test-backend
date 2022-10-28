@@ -10,6 +10,8 @@ export default abstract class Controller<T> {
 
   public abstract create(req: Req, res: Res, next: Next): Promise<typeof res | void>;
 
+  public abstract update(req: Req, res: Res, next: Next): Promise<typeof res | void>;
+
   public getAll = async (_req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
       const getAll = await this._service.getAll();
@@ -23,15 +25,6 @@ export default abstract class Controller<T> {
     try {
       const getById = await this._service.getById(req.params.id);
       return res.status(200).json(getById);
-    } catch (error) {
-      return next(error);
-    }
-  };
-
-  public update = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
-    try {
-      const update = await this._service.update(req.params.id, req.body);
-      return res.status(202).json(update);
     } catch (error) {
       return next(error);
     }
