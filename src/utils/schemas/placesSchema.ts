@@ -1,21 +1,23 @@
 import Joi from 'joi';
 
 export const SCHEMAPlaces = Joi.object({
-  places: Joi.array().items({
+  place: Joi.object({
     name: Joi.string().min(3).required(),
     address: Joi.string().required(),
-    phone_number: Joi.string().required(),
     address_number: Joi.number().required(),
-    complement: Joi.string(),
+    complement: Joi.string().allow('').required(),
     cep: Joi.string().required(),
   }).required(),
-  responsibles: Joi.object({
-    full_name: Joi.string().min(5).required(),
+  responsible: Joi.object({
+    full_name: Joi.string().required(),
     address: Joi.string().required(),
     address_number: Joi.number().required(),
-    complement: Joi.string(),
+    phone_number: Joi.number().required(),
+    complement: Joi.string().allow('').required(),
+    cep: Joi.string().required(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
+  company_id: Joi.string().required(),
 });
 
 export const SCHEMAUpdatePlaces = Joi.object({
