@@ -6,12 +6,13 @@ export const SCHEMACompany = Joi.object({
     cnpj: Joi.string().required(),
     description: Joi.string().required(),
   }).required(),
-  responsibles: Joi.object({
+  responsible: Joi.object({
     full_name: Joi.string().required(),
     address: Joi.string().required(),
     address_number: Joi.number().required(),
     phone_number: Joi.number().required(),
-    complement: Joi.string(),
+    complement: Joi.string().allow('').required(),
+    cep: Joi.string().required(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
 });
