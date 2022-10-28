@@ -1,5 +1,5 @@
 import { Request as Req, Response as Res, NextFunction as Next } from 'express';
-import { IPlace, IOnePlace } from '../utils/interfaces/IPlaces';
+import { IPlace, IOnePlace } from '../utils/interfaces/IPlace';
 import Controller from './controller';
 import Service from '../services/service';
 import PlaceService from '../services/placeService';

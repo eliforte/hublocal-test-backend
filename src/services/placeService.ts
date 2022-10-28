@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { IOnePlace, IPlace } from '../utils/interfaces/IPlaces';
+import { IOnePlace, IPlace } from '../utils/interfaces/IPlace';
 import Service from './service';
 import { prismaClient } from '../database/prismaClient';
 import {
@@ -58,7 +58,7 @@ export default class PlaceService extends Service<IPlace | IOnePlace> {
     const ticketStatus = await this._model.tickets.findFirst({
       where: { place_id: id },
     });
-    console.log(ticketStatus);
+
     if (ticketStatus?.status === 'CONCLUÍDO' || !ticketStatus) {
       const updatedPlace = await this._model.places.update({
         where: { id },

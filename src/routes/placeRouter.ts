@@ -1,4 +1,4 @@
-import { IOnePlace, IPlace } from '../utils/interfaces/IPlaces';
+import { IOnePlace, IPlace } from '../utils/interfaces/IPlace';
 import CustomRouter from './customRouter';
 import Controller from '../controllers/controller';
 import PlaceController from '../controllers/placeController';
@@ -32,6 +32,11 @@ export default class PlaceRouter extends CustomRouter<IOnePlace | IPlace> {
       Auth.verifyToken,
       this._controller.getById,
     );
+    this._router.get(
+      this._path,
+      Auth.verifyToken,
+      this._controller.getAll,
+    );
     this._router.put(
       `${this._path}/:id`,
       Auth.verifyToken,
@@ -44,11 +49,6 @@ export default class PlaceRouter extends CustomRouter<IOnePlace | IPlace> {
       Auth.verifyToken,
       Auth.isAdmin,
       this._controller.delete,
-    );
-    this._router.get(
-      this._path,
-      Auth.verifyToken,
-      this._controller.getAll,
     );
   };
 }
