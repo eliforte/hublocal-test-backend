@@ -15,5 +15,5 @@ export default abstract class Service<T> {
 
   public abstract update(id: string, data: T, user_id: string | undefined): Promise<T | null>;
 
-  public abstract delete(id: string): Promise<T | null>;
+  public abstract delete(id: string, user_id?: string): Promise<T | null>;
 }

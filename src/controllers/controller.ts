@@ -32,7 +32,8 @@ export default abstract class Controller<T> {
 
   public delete = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
-      await this._service.delete(req.params.id);
+      const { id } = req.user;
+      await this._service.delete(req.params.id, id);
       return res.status(204).json({});
     } catch (error) {
       return next(error);
