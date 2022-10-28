@@ -12,7 +12,7 @@ export default class UserService extends Service<IUser> {
     super(model);
   }
 
-  public create = async (user: IUser, user_id: string): Promise<string> => {
+  public create = async (user: IUser, _user_id: string): Promise<string> => {
     const {
       name, email, password, is_admin,
     } = user;
@@ -41,12 +41,11 @@ export default class UserService extends Service<IUser> {
     where: { id },
   });
 
-  public update = async (id: string, user: IUser): Promise<IUser | null> => (
-    this._model.users.update({
-      where: { id },
-      data: { ...user },
-    })
-  );
+  public update = async (id: string, user: IUser):
+    Promise<IUser | null> => this._model.users.update({
+    where: { id },
+    data: { ...user },
+  });
 
   public delete = async (id: string): Promise<IUser | null> => this._model.users.delete({
     where: { id },
