@@ -71,16 +71,16 @@ model Tickets {
   id String @id @default(uuid()) @unique
   title String
   created_at  DateTime @default(now())
-  update_at DateTime?
+  update_at DateTime @updatedAt
   created_by_user String
-  upgradable_by_user String
+  upgradable_by_user String?
   status String
   name      String?
   address   String?
   address_number Int?
   complement String?
   cep String?
-  place_id String
+  place_id String @unique
   place Places @relation(fields: [place_id], references: [id])
 
   @@map("tickets")
