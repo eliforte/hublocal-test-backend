@@ -1,6 +1,6 @@
 import { NextFunction as Next, Request as Req, Response as Res } from 'express';
 import { ValidationError } from 'joi';
-import { IError } from '../../utils/interfaces/IErrors';
+import { IError } from '../../utils/interfaces/IError';
 
 interface IErrorResponse extends ValidationError, IError {}
 
