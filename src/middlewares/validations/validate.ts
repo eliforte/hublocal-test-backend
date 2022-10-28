@@ -29,6 +29,7 @@ export default class Validate {
       if (itensForUpdatedChecked.error) {
         next(itensForUpdatedChecked.error);
       }
+      next();
     } catch (error) {
       next(error);
     }
