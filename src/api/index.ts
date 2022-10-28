@@ -3,6 +3,7 @@ import App from './app';
 import LoginRouter from '../routes/loginRoute';
 import UserRouter from '../routes/userRoute';
 import CompanyRouter from '../routes/companyRoute';
+import PlaceRouter from '../routes/placeRouter';
 import ErrorHandler from '../middlewares/errors';
 
 dotenv.config();
@@ -14,6 +15,7 @@ app.useCors(corsOptions);
 app.newRoutes(new UserRouter().router);
 app.newRoutes(new LoginRouter().router);
 app.newRoutes(new CompanyRouter().router);
+app.newRoutes(new PlaceRouter().router);
 
 app.errorHandler(ErrorHandler.handler);
 
