@@ -5,7 +5,6 @@ import { prismaClient } from '../database/prismaClient';
 import {
   COMPANY_EXIST,
   ERROR_CREATING_COMPANY,
-  RESPONSABLE_EXIST,
 } from '../utils/errors';
 
 export default class CompanyService extends Service<ICompany | ISingleCompany> {
@@ -16,7 +15,7 @@ export default class CompanyService extends Service<ICompany | ISingleCompany> {
   public create = async (data: ICompany, user_id: string): Promise<string> => {
     const { company, responsible } = data;
     const { cnpj } = company;
-    const { full_name, phone_number } = responsible;
+    const { phone_number } = responsible;
 
     const findCompany = await this._model.companies.findUnique({
       where: { cnpj },
@@ -24,23 +23,19 @@ export default class CompanyService extends Service<ICompany | ISingleCompany> {
     if (findCompany) throw COMPANY_EXIST;
 
     const findResponsable = await this._model.responsables.findUnique({
-      where: { full_name, phone_number },
+      where: { phone_number },
     });
-
-    if (findResponsable) throw RESPONSABLE_EXIST;
 
     const newCompany = await this._model.companies.create({
       data: {
         ...company,
         user_id,
         responsables: {
-          create: {
-            ...responsible,
+          connectOrCreate: {
+            where: { id: findResponsable?.id },
+            create: { ...responsible },
           },
         },
-      },
-      include: {
-        responsables: true,
       },
     });
 
