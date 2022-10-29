@@ -14,7 +14,7 @@ export default class TicketService extends Service<IReceivedTicket | ITicket | I
     super(model);
   }
 
-  public create = async (data: IReceivedTicket, user_id: string): Promise<string> => {
+  public create = async (data: IReceivedTicket, user_id: string): Promise<ITicket> => {
     const { ticket, place } = data;
     const {
       address,
@@ -28,27 +28,24 @@ export default class TicketService extends Service<IReceivedTicket | ITicket | I
       where: { place_id: place.id },
     });
 
-    if (findTicket?.status !== 'CONCLUÍDO') throw TICKET_EXIST;
+    if (findTicket && findTicket?.status !== 'CONCLUÍDO') throw TICKET_EXIST;
 
-    if (findTicket?.status === 'CONCLUÍDO' || !findTicket) {
-      const newTicket = await this._model.tickets.create({
-        data: {
-          ...ticket,
-          address,
-          address_number,
-          cep,
-          complement,
-          name,
-          created_by_user: user_id,
-          place: {
-            connect: { id: place.id },
-          },
+    const newTicket = await this._model.tickets.create({
+      data: {
+        ...ticket,
+        address,
+        address_number,
+        cep,
+        complement,
+        name,
+        created_by_user: user_id,
+        place: {
+          connect: { id: place.id },
         },
-      });
+      },
+    });
 
-      if (!newTicket) throw ERROR_CREATING_TICKET;
-    }
-    return 'Ticket criado com sucesso!.';
+    return newTicket;
   };
 
   public getAll = async (): Promise<ITicket[]> => this._model.tickets.findMany();

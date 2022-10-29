@@ -12,7 +12,7 @@ export default class PlaceService extends Service<IPlace | IOnePlace> {
     super(model);
   }
 
-  public create = async (data: IPlace, _user_id: string): Promise<string> => {
+  public create = async (data: IPlace, _user_id: string): Promise<IOnePlace> => {
     const { place, responsible, company_id } = data;
     const { name, address, address_number } = place;
     const { phone_number } = responsible;
@@ -42,7 +42,7 @@ export default class PlaceService extends Service<IPlace | IOnePlace> {
 
     if (!newPlace) throw ERROR_CREATING_PLACE;
 
-    return 'Estabelecimento registrado com sucesso!';
+    return newPlace;
   };
 
   public getAll = async (): Promise<IOnePlace[]> => this._model.places.findMany();

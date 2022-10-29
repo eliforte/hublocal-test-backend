@@ -15,7 +15,11 @@ export default abstract class Controller<T> {
   public getAll = async (_req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
       const getAll = await this._service.getAll();
-      return res.status(200).json(getAll);
+      return res.status(200).json({
+        message: 'OK',
+        statusCode: 200,
+        result: getAll,
+      });
     } catch (error) {
       return next(error);
     }
@@ -24,7 +28,11 @@ export default abstract class Controller<T> {
   public getById = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
       const getById = await this._service.getById(req.params.id);
-      return res.status(200).json(getById);
+      return res.status(200).json({
+        message: 'OK',
+        statusCode: 200,
+        result: getById,
+      });
     } catch (error) {
       return next(error);
     }

@@ -10,8 +10,12 @@ export default class LoginControler {
 
   public login = async (req: Req, res: Res, next: Next): Promise<typeof res | void> => {
     try {
-      const result = await this._service.login(req.body);
-      res.status(200).json({ ...result });
+      const userInfos = await this._service.login(req.body);
+      res.status(200).json({
+        message: 'Usuário logado com sucesso!',
+        statusCode: 200,
+        result: userInfos,
+      });
     } catch (error) {
       next(error);
     }

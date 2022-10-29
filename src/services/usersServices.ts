@@ -12,7 +12,7 @@ export default class UserService extends Service<IUser> {
     super(model);
   }
 
-  public create = async (user: IUser, _user_id: string): Promise<string> => {
+  public create = async (user: IUser, _user_id: string): Promise<IUser> => {
     const {
       name, email, password, is_admin,
     } = user;
@@ -32,7 +32,7 @@ export default class UserService extends Service<IUser> {
 
     if (!newUser) throw ERROR_CREATING_USER;
 
-    return 'Usuário registrado com sucesso';
+    return newUser;
   };
 
   public getAll = async (): Promise<IUser[]> => this._model.users.findMany();

@@ -12,7 +12,7 @@ export default class CompanyService extends Service<ICompany | ISingleCompany> {
     super(model);
   }
 
-  public create = async (data: ICompany, user_id: string): Promise<string> => {
+  public create = async (data: ICompany, user_id: string): Promise<ISingleCompany> => {
     const { company, responsible } = data;
     const { cnpj } = company;
     const { phone_number } = responsible;
@@ -41,7 +41,7 @@ export default class CompanyService extends Service<ICompany | ISingleCompany> {
 
     if (!newCompany) throw ERROR_CREATING_COMPANY;
 
-    return 'Empresa registrada com sucesso!';
+    return newCompany;
   };
 
   public getAll = async (): Promise<ISingleCompany[]> => this._model.companies.findMany();

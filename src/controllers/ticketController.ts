@@ -15,7 +15,11 @@ export default class TicketsController extends Controller<
     try {
       const { id } = req.user;
       const created = await this._service.create(req.body, id);
-      return res.status(201).json({ created });
+      return res.status(201).json({
+        message: 'Ticket criado com sucesso!',
+        statusCode: 201,
+        result: created,
+      });
     } catch (error) {
       return next(error);
     }
@@ -25,7 +29,11 @@ export default class TicketsController extends Controller<
     try {
       const { id } = req.user;
       const updated = await this._service.update(req.params.id, req.body, id);
-      return res.status(200).json({ updated });
+      return res.status(202).json({
+        message: 'Ticket atualizado com sucesso!',
+        statusCode: 202,
+        result: updated,
+      });
     } catch (error) {
       return next(error);
     }
