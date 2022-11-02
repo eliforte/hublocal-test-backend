@@ -31,3 +31,7 @@ export const ERROR_CREATING_TICKET = new NewError(409, 'Erro ao registrar novo t
 export const USER_NOT_AUTHORIZATION = new NewError(401, 'Usuário não autorizado');
 
 export const ERROR_UPDATE_TICKET = new NewError(409, 'Erro ao atualizar ticket. Aguarde um momento e tente de novamente.');
+
+export const RESPONSIBLE_EXIST = new NewError(409, 'Responsável já registrado');
+
+export const ERROR_UPDATE_RESPONSIBLE = new NewError(409, 'Erro ao atualizar dados do responsável. Aguarde um momento e tente de novamente.');
