@@ -1,4 +1,4 @@
-import { IUser } from '../utils/interfaces/IUser';
+import { IUser, IUserDB } from '../utils/interfaces/IUser';
 import CustomRouter from './customRouter';
 import Controller from '../controllers/controller';
 import UsersController from '../controllers/usersController';
@@ -6,13 +6,13 @@ import Validate from '../middlewares/validations/validate';
 import ValidadeUser from '../middlewares/validations/usersValidation';
 import Auth from '../utils/auth/token';
 
-export default class UserRouter extends CustomRouter<IUser> {
+export default class UserRouter extends CustomRouter<IUser | IUserDB> {
   protected _path = '/api/v1/users';
 
   private _validate: Validate;
 
   constructor(
-    controller: Controller<IUser> = new UsersController(),
+    controller: Controller<IUser | IUserDB> = new UsersController(),
     validate: Validate = new ValidadeUser(),
   ) {
     super(controller);

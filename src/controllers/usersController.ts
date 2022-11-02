@@ -1,11 +1,11 @@
 import { Request as Req, Response as Res, NextFunction as Next } from 'express';
-import { IUser } from '../utils/interfaces/IUser';
+import { IUser, IUserDB } from '../utils/interfaces/IUser';
 import Controller from './controller';
 import Service from '../services/service';
 import UserService from '../services/usersServices';
 
-export default class UsersController extends Controller<IUser> {
-  constructor(service: Service<IUser> = new UserService()) {
+export default class UsersController extends Controller<IUser | IUserDB> {
+  constructor(service: Service<IUser | IUserDB> = new UserService()) {
     super(service);
   }
 
