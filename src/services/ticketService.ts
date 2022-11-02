@@ -4,7 +4,6 @@ import Service from './service';
 import { prismaClient } from '../database/prismaClient';
 import {
   TICKET_EXIST,
-  ERROR_CREATING_TICKET,
   USER_NOT_AUTHORIZATION,
   ERROR_UPDATE_TICKET,
 } from '../utils/errors';
