@@ -26,7 +26,7 @@ model Companies {
   description String
   created_at  DateTime @default(now())
   user_id     String
-  user        Users @relation(fields: [user_id], references: [id])
+  user        Users @relation(fields: [user_id], references: [id], onDelete: Cascade)
   places Places[]
   responsables Responsables[]
 
@@ -42,7 +42,7 @@ model Places {
   cep String
   created_at  DateTime @default(now())
   company_id String
-  company     Companies @relation(fields: [company_id], references: [id])
+  company     Companies @relation(fields: [company_id], references: [id], onDelete: Cascade)
   responsables Responsables[]
   tickets Tickets[]
 
@@ -59,10 +59,10 @@ model Responsables {
   cep String
   is_main_responsable Boolean
   created_at  DateTime @default(now())
-  company Companies? @relation(fields: [company_id], references: [id])
+  company Companies? @relation(fields: [company_id], references: [id], onDelete: SetNull)
   company_id String? @unique
-  places Places? @relation(fields: [places_id], references: [id])
-  places_id String? @unique
+  place Places? @relation(fields: [place_id], references: [id], onDelete: SetNull)
+  place_id String? @unique
 
   @@map("responsables")
 }
@@ -81,7 +81,7 @@ model Tickets {
   complement String?
   cep String?
   place_id String @unique
-  place Places @relation(fields: [place_id], references: [id])
+  place Places @relation(fields: [place_id], references: [id], onDelete: Cascade)
 
   @@map("tickets")
 }
