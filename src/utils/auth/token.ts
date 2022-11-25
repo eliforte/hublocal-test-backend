@@ -21,7 +21,6 @@ export default class Auth {
       req.user = decoded;
       next();
     } catch (error) {
-      console.log(error);
       next(error);
     }
   };
