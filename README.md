@@ -107,3 +107,5 @@ Após configurar esses dois arquivos, basta execurar o comando abaixo para que s
 ```bash
 cd docker-compose up -d
 ```
+
+Caso queria reportar algum erro, bastanta criar uma Issue que irei responder. :D
