@@ -102,7 +102,7 @@ volumes:
     pgadmin:
 ```
 
-Após configurar esses dois arquivos, basta execurar o comando abaixo para que seu bando de dados e a plataforma administrar e desenvolver, estajam disponíveis. 
+Após configurar esses dois arquivos, basta execurar o comando abaixo para que seu bando de dados e a plataforma administrar e desenvolver, estejam disponíveis. 
 
 ```bash
 cd docker-compose up -d
