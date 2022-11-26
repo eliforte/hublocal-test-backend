@@ -48,8 +48,8 @@ export default class UserService extends Service<IUser | IUserDB> {
     const allUsers: IUserDB[] = []
 
     findUsers.map((user) => {
-      const { email, is_admin, name, created_at } = user;
-      allUsers.push({ email, is_admin, name, created_at });
+      const { email, is_admin, name, created_at, id } = user;
+      allUsers.push({ email, is_admin, name, created_at, id });
     })
 
     return allUsers
