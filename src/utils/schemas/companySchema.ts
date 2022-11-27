@@ -3,7 +3,7 @@ import Joi from 'joi';
 export const SCHEMACompany = Joi.object({
   company: Joi.object({
     name: Joi.string().min(3).required(),
-    cnpj: Joi.string().required(),
+    cnpj: Joi.string().length(14).required(),
     description: Joi.string().required(),
   }).required(),
   responsible: Joi.object({
@@ -12,7 +12,7 @@ export const SCHEMACompany = Joi.object({
     address_number: Joi.number().required(),
     phone_number: Joi.number().required(),
     complement: Joi.string().allow('').required(),
-    cep: Joi.string().required(),
+    cep: Joi.string().length(5).required(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
 });

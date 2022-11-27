@@ -13,7 +13,7 @@ export const SCHEMATickets = Joi.object({
     phone_number: Joi.string(),
     address_number: Joi.number(),
     complement: Joi.string(),
-    cep: Joi.string(),
+    cep: Joi.string().length(5),
   }),
 });
 
@@ -24,5 +24,5 @@ export const SCHEMAUpdateTickets = Joi.object({
   address_number: Joi.number(),
   upgradable_by_user: Joi.string(),
   complement: Joi.string().allow(''),
-  cep: Joi.string(),
+  cep: Joi.string().length(5),
 });
