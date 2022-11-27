@@ -32,13 +32,13 @@ export default class CompanyService extends Service<ICompany | ISingleCompany> {
         user_id,
         responsables: {
           connectOrCreate: {
-            where: { phone_number: findResponsable?.phone_number },
+            where: { id: `${findResponsable?.id}` },
             create: { ...responsible },
           },
         },
       },
     });
-
+    
     if (!newCompany) throw ERROR_CREATING_COMPANY;
 
     return newCompany;

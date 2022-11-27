@@ -33,7 +33,7 @@ export default class PlaceService extends Service<IPlace | IOnePlace> {
         company_id,
         responsables: {
           connectOrCreate: {
-            where: { id: findResponsable?.id },
+            where: { id: `${findResponsable?.id}` },
             create: { ...responsible },
           },
         },
