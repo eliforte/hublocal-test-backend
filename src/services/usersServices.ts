@@ -73,6 +73,7 @@ export default class UserService extends Service<IUser | IUserDB> {
       });
 
       return {
+        id: updatedUser?.id,
         name: updatedUser?.name,
         email: updatedUser?.email,
         created_at: updatedUser?.created_at,
