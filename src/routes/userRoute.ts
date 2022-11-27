@@ -26,6 +26,12 @@ export default class UserRouter extends CustomRouter<IUser | IUserDB> {
       this._validate.validateReqBody,
       this._controller.create,
     );
+    this._router.post(
+      `${this._path}/admin`,
+      Auth.isAdmin,
+      this._validate.validateReqBody,
+      this._controller.create,
+    );
     this._router.get(
       `${this._path}/:id`,
       Auth.verifyToken,
