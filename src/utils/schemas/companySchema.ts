@@ -12,7 +12,7 @@ export const SCHEMACompany = Joi.object({
     address_number: Joi.number().required(),
     phone_number: Joi.number().required(),
     complement: Joi.string().allow('').required(),
-    cep: Joi.string().length(5).required(),
+    cep: Joi.string().length(8).required(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
 });

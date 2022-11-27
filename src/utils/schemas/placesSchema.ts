@@ -6,7 +6,7 @@ export const SCHEMAPlaces = Joi.object({
     address: Joi.string().required(),
     address_number: Joi.number().required(),
     complement: Joi.string().allow('').required(),
-    cep: Joi.string().length(5).required(),
+    cep: Joi.string().length(8).required(),
   }).required(),
   responsible: Joi.object({
     full_name: Joi.string().required(),
@@ -14,7 +14,7 @@ export const SCHEMAPlaces = Joi.object({
     address_number: Joi.number().required(),
     phone_number: Joi.number().required(),
     complement: Joi.string().allow('').required(),
-    cep: Joi.string().length(5).required(),
+    cep: Joi.string().length(8).required(),
     is_main_responsable: Joi.boolean().required(),
   }).required(),
   company_id: Joi.string().required(),

@@ -8,7 +8,7 @@ export const SCHEMAResponsible = Joi.object({
   address_number: Joi.number().required(),
   phone_number: Joi.number().required(),
   complement: Joi.string().allow('').required(),
-  cep: Joi.string().length(5).required(),
+  cep: Joi.string().length(8).required(),
   is_main_responsable: Joi.boolean().required(),
 });
 
@@ -20,6 +20,6 @@ export const SCHEMAUpdateResponsible = Joi.object({
   address_number: Joi.number(),
   phone_number: Joi.number(),
   complement: Joi.string().allow(''),
-  cep: Joi.string().length(5),
+  cep: Joi.string().length(8),
   is_main_responsable: Joi.boolean(),
 });
