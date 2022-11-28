@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = new App();
 const corsOptions = {
-  origin: ['*']
+  origin: '*',
 };
 
 app.useCors(corsOptions);
