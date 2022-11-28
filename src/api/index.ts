@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = new App();
 const corsOptions = {
-  origin: [`${process.env.PROD_CLIENT}`, 'http://localhost:3000', 'http://localhost:9090']
+  origin: ['*']
 };
 
 app.useCors(corsOptions);
