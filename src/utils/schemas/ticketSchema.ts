@@ -9,7 +9,6 @@ export const SCHEMATickets = Joi.object({
     id: Joi.string().required(),
     name: Joi.string().min(3),
     address: Joi.string(),
-    phone_number: Joi.string(),
     address_number: Joi.number(),
     complement: Joi.string(),
     cep: Joi.string().length(8),
