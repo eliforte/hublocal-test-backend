@@ -3,7 +3,6 @@ import Joi from 'joi';
 export const SCHEMATickets = Joi.object({
   ticket: Joi.object({
     status: Joi.string().required(),
-    title: Joi.string().required(),
     upgradable_by_user: Joi.string().required(),
   }),
   place: Joi.object({
