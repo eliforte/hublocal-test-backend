@@ -45,7 +45,25 @@ export default class PlaceService extends Service<IPlace | IOnePlace> {
     return newPlace;
   };
 
-  public getAll = async (): Promise<IOnePlace[]> => this._model.places.findMany();
+  public getAll = async (): Promise<IOnePlace[]> => {
+    const findPlaces = await this._model.places.findMany({
+      include: {
+        company: {
+          select: {
+            name: true
+          }
+        },
+        responsables: {
+          select: {
+            full_name: true,
+            is_main_responsable: true
+          }
+        }
+      }
+    })
+
+    return findPlaces
+  };
 
   public getById = async (id: string): Promise<IOnePlace | null> => (
     this._model.places.findUnique({

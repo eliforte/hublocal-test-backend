@@ -48,11 +48,38 @@ export default class ResponsibleService extends Service<IResponsible | IReceived
     return newResponsible;
   }
 
-  public getAll = async (): Promise<IResponsible[]> => this._model.responsables.findMany();
+  public getAll = async (): Promise<IResponsible[]> => this._model.responsables.findMany({
+    include: {
+      company: {
+        select: {
+          name: true
+        }
+      },
+      place: {
+        select: {
+          name: true
+        }
+      }
+    }
+  });
 
   public getById = async (id: string): Promise<IResponsible | null> => (
     this._model.responsables.findUnique({
       where: { id },
+      include: {
+        company: {
+          select: {
+            id: true,
+            name: true
+          }
+        },
+        place: {
+          select: {
+            id: true,
+            name: true
+          }
+        }
+      }
     })
   );
 
