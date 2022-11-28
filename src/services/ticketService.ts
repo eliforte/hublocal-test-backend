@@ -64,6 +64,17 @@ export default class TicketService extends Service<IReceivedTicket | ITicket | I
   public getById = async (id: string): Promise<ITicket | null> => (
     this._model.tickets.findUnique({
       where: { id },
+      include: {
+        place: {
+          select: {
+            responsables: {
+              select: {
+                full_name: true
+              }
+            }
+          }
+        }
+      }
     })
   );
 
